@@ -1,25 +1,23 @@
 import React, { Components, Component } from "react"
 import { StyleSheet, Text, View } from 'react-native'
+import styled from "styled-components/native"
 
-const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      backgroundColor: '#fff',
-      alignItems: 'center',
-      justifyContent: 'center',
-    },
-  });
-  
+const Body = styled.View`
+  flex: 1;
+  backgroundColor: #fff;
+  align-items: center;
+  justify-content: center;
+` 
 
 class Home extends Component {
   render = () => {
     return (
-      <View style={styles.container}>
+      <Body>
         <Text>Open up App.js to start working on your app!</Text>
         <Text>Changes you make will automatically reload.</Text>
         <Text>Shake your phone to open the developer menu.</Text>
         <Text>Hello!!!</Text>
-      </View>
+      </Body>
     );
   }
 }
