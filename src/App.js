@@ -35,7 +35,7 @@ export class App extends Component {
     }
     return (
       <Provider store={this.props.store}>
-          <Home />
+        <Home />
       </Provider>
     )
   }

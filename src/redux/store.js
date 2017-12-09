@@ -6,11 +6,7 @@ import promiseMiddleware from "redux-promise-middleware"
 
 import reducers from "./reducers"
 
-export default function configureStore(
-  initialState = {},
-  history = {},
-  { api } = {}
-) {
+export default function configureStore(initialState = {}, { api } = {}) {
   const shouldLog = process.env.NODE_ENV === "development"
 
   // Setup middleware
@@ -24,10 +20,8 @@ export default function configureStore(
   }
 
   // Setup middlewares and enhancers
-  const enhancer = compose(
-    applyMiddleware(...middleware)
-  )
-  
+  const enhancer = compose(applyMiddleware(...middleware))
+
   // Create redux store
   const store = createStore(reducers, initialState, enhancer)
 

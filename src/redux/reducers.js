@@ -1,14 +1,15 @@
 import { persistCombineReducers } from "redux-persist"
-import storage from 'redux-persist/es/storage' // default: AsyncStorage
+import storage from "redux-persist/es/storage" // default: AsyncStorage
 
 import hydratation from "./modules/hydratation"
 
 const config = {
-  key: 'root',
+  key: "root",
   storage,
 }
 
 function test(state = [], action) {
+  action
   return state
 }
 

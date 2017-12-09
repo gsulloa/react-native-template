@@ -10,7 +10,7 @@ const client = new Api(process.env.REACT_APP_API || "http://localhost:3000")
 
 // Redux required objects
 const initialState = {}
-const store = configureStore(initialState, null, { client })
+const store = configureStore(initialState, { client })
 
 // App general settings
 const options = { hydratation: { blacklist: ["hydratation", "router"] } }
@@ -19,8 +19,6 @@ devlog("index.js", "store", store, "options", options)
 
 export default class RootApp extends React.Component {
   render() {
-    return (
-      <App store={store} options={options} history={undefined} />
-    )
+    return <App store={store} options={options} history={undefined} />
   }
 }

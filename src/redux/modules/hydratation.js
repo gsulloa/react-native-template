@@ -24,12 +24,12 @@ export default function reducer(state = initialState, action) {
 }
 
 // Action creators
-export const hydrate = (store, options) => async dispatch => {
+export const hydrate = store => async dispatch => {
   const dispatchHydrate = ({ error, persistor }) =>
     dispatch({ type: HYDRATATION, error, persistor })
   try {
     const persistor = await new Promise((resolve, reject) => {
-      const persistor = persistStore(store, null, (err) => {
+      const persistor = persistStore(store, null, err => {
         if (err) reject(err)
         else resolve(persistor)
       })
