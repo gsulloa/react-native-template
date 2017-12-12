@@ -19,7 +19,7 @@ import {
 
 const Body = styled.View`
   flex: 1;
-  backgroundcolor: #fff;
+  background-color: #fff;
   align-items: center;
   justify-content: center;
 `
