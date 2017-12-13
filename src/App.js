@@ -5,7 +5,7 @@ import { Provider, connect } from "react-redux"
 import { hydrate } from "./redux/modules/hydratation"
 import { devlog } from "./utils/log"
 
-import Home from "./screens/Home"
+import Nav from "./Nav"
 
 const mapStateToProps = state => ({
   hydratation: state.hydratation,
@@ -35,7 +35,7 @@ export class App extends Component {
     }
     return (
       <Provider store={this.props.store}>
-        <Home />
+        <Nav />
       </Provider>
     )
   }

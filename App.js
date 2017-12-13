@@ -19,6 +19,6 @@ devlog("index.js", "store", store, "options", options)
 
 export default class RootApp extends React.Component {
   render() {
-    return <App store={store} options={options} history={undefined} />
+    return <App store={store} options={options} />
   }
 }
