@@ -1,4 +1,5 @@
 import React, { Component } from "react"
+import { StatusBar, Platform } from "react-native"
 import styled from "styled-components/native"
 import { Font } from "expo"
 import PropTypes from "prop-types"
@@ -50,7 +51,10 @@ export class App extends Component {
     return (
       <Provider store={this.props.store}>
         <PersistGate persistor={this.props.persistor} loading={<Loading />}>
-          <StatusBarBackground />
+          <StatusBar
+            barStyle={`${Platform.OS === "android" ? "light" : "dark"}-content`}
+          />
+          {Platform.OS === "android" ? <StatusBarBackground /> : null}
           <Nav />
         </PersistGate>
       </Provider>
