@@ -7,6 +7,7 @@ import routes from "./modules/routes"
 const config = {
   key: "root",
   storage,
+  blacklist: ["hydratation"],
 }
 
 function test(state = 0, action) {
