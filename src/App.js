@@ -4,12 +4,12 @@ import { Font } from "expo"
 import PropTypes from "prop-types"
 import { Provider, connect } from "react-redux"
 
-import { hydrate } from "./redux/modules/hydratation"
-import { devlog } from "./utils/log"
+import { hydrate } from "@redux/modules/hydratation"
+import { devlog } from "@utils/log"
 
 import { PersistGate } from "redux-persist/es/integration/react"
 import { Text } from "react-native"
-import Nav from "./Nav"
+import Nav from "@src/Nav"
 
 const StatusBarBackground = styled.View`
   background-color: black;
