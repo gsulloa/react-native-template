@@ -8,7 +8,8 @@ import { hydrate } from "@redux/modules/hydratation"
 import { devlog } from "@utils/log"
 
 import { PersistGate } from "redux-persist/es/integration/react"
-import { Text } from "react-native"
+
+import Loading from "@screens/LoadingHydrate"
 import Nav from "@src/Nav"
 
 const StatusBarBackground = styled.View`
@@ -48,10 +49,7 @@ export class App extends Component {
     if (!this.state.fontsLoaded) return null
     return (
       <Provider store={this.props.store}>
-        <PersistGate
-          persistor={this.props.persistor}
-          loading={<Text>Loading</Text>}
-        >
+        <PersistGate persistor={this.props.persistor} loading={<Loading />}>
           <StatusBarBackground />
           <Nav />
         </PersistGate>

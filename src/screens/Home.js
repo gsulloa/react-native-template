@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 import { Screen } from "@components/View"
-import { Text, Title } from "@components/View"
+import { Text, Title } from "@components/Text"
 
 class Home extends Component {
   render = () => {
