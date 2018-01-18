@@ -1,11 +1,21 @@
 import React, { Component } from "react"
+import styled from "styled-components/native"
+import { Font } from "expo"
 import PropTypes from "prop-types"
 import { Provider, connect } from "react-redux"
 
 import { hydrate } from "./redux/modules/hydratation"
 import { devlog } from "./utils/log"
 
+import { PersistGate } from "redux-persist/es/integration/react"
+import { Text } from "react-native"
 import Nav from "./Nav"
+
+const StatusBarBackground = styled.View`
+  background-color: black;
+  height: 25px;
+  margin: 0;
+`
 
 const mapStateToProps = state => ({
   hydratation: state.hydratation,
@@ -18,24 +28,33 @@ const mapDispatchToProps = {
 export class App extends Component {
   static propTypes = {
     store: PropTypes.object.isRequired,
-    hydratation: PropTypes.object.isRequired,
-    hydrate: PropTypes.func.isRequired,
-    options: PropTypes.object,
+    persistor: PropTypes.object.isRequired,
   }
 
-  componentWillMount() {
-    const { store, hydrate, options } = this.props
-    hydrate(store, options.hydratation)
+  state = {
+    fontsLoaded: false,
+  }
+  componentWillMount = async () => {
+    await Font.loadAsync({
+      "bebas-neue": require("@fonts/bebas-neue.otf"),
+    })
+    this.setState({
+      fontsLoaded: true,
+    })
   }
 
   render() {
     devlog("App", this.state, this.props)
-    if (!this.props.hydratation.done) {
-      return null
-    }
+    if (!this.state.fontsLoaded) return null
     return (
       <Provider store={this.props.store}>
-        <Nav />
+        <PersistGate
+          persistor={this.props.persistor}
+          loading={<Text>Loading</Text>}
+        >
+          <StatusBarBackground />
+          <Nav />
+        </PersistGate>
       </Provider>
     )
   }
